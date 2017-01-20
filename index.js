@@ -54,6 +54,11 @@ var
     app.use(ejsLayouts)
     app.use(express.static('public'))
 
+    app.get('/', function(req,res){
+      if (req.app.locals.loggedIn){res.redirect('/team')}
+      else{res.render('home')}
+    })
+
 
 http.listen(port, function(){
 	console.log("Server running on port: ", port)
